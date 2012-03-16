@@ -24,7 +24,7 @@ module RailsSqlViews
             drop_view(name) rescue nil
           end
 
-          create_sql = if options[:replace] ? "CREATE OR REPLACE VIEW " : "CREATE VIEW "
+          create_sql = options[:replace] ? "CREATE OR REPLACE VIEW " : "CREATE VIEW "
           create_sql << "#{quote_table_name(name)} "
           if supports_view_columns_definition? && !view_definition.to_sql.blank?
             create_sql << "("
