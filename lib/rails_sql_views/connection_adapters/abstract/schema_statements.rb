@@ -10,6 +10,8 @@ module RailsSqlViews
       # [<tt>:check_option</tt>]
       #   Specify restrictions for inserts or updates in updatable views. ANSI SQL 92 defines two check option
       #   values: CASCADED and LOCAL. See your database documentation for allowed values.
+      # [<tt>:replace</tt>]
+      #   Specify we should use CREATE OR REPLACE VIEW not just CREATE VIEW
       def create_view(name, select_query, options={})
         if supports_views?
           view_definition = ViewDefinition.new(self, select_query)
@@ -22,7 +24,7 @@ module RailsSqlViews
             drop_view(name) rescue nil
           end
 
-          create_sql = "CREATE VIEW "
+          create_sql = if options[:replace] ? "CREATE OR REPLACE VIEW " : "CREATE VIEW "
           create_sql << "#{quote_table_name(name)} "
           if supports_view_columns_definition? && !view_definition.to_sql.blank?
             create_sql << "("
