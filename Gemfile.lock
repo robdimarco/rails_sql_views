@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    robdimarco_rails_sql_views (0.9.0)
+      rails (>= 3.0.7)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -33,12 +39,7 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     flexmock (0.9.0)
-    git (1.2.5)
     i18n (0.5.0)
-    jeweler (1.6.2)
-      bundler (~> 1.0)
-      git (>= 1.2.5)
-      rake
     mail (2.2.19)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
@@ -77,10 +78,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  flexmock (= 0.9.0)
-  jeweler (= 1.6.2)
-  mysql2 (= 0.2.7)
-  pg (= 0.11.0)
-  rails (>= 3.0.7)
-  rake (~> 0.9.2.2)
-  test-unit (= 2.3.0)
+  activerecord
+  flexmock
+  mysql2
+  pg
+  rake
+  robdimarco_rails_sql_views!
+  test-unit
